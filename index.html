@@ -1,0 +1,1432 @@
+
+aplikasi_generator_modul_ajar_sekolah_Gemini.html
+100%
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator Modul Ajar Sekolah Terpadu - Kurikulum Merdeka & Deep Learning</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .font-serif-doc {
+      font-family: 'Merriweather', Georgia, serif;
+    }
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    
+    /* Print Optimization Rules */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt !important;
+      }
+      .no-print, nav, #panel-config, #action-toolbar, #toast-container {
+        display: none !important;
+      }
+      #panel-workspace {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+      .document-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 1.8cm 1.5cm 1.8cm 1.5cm;
+      }
+      table {
+        page-break-inside: avoid;
+      }
+      tr, td, th {
+        page-break-inside: avoid;
+      }
+      h1, h2, h3, h4 {
+        page-break-after: avoid;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation Header -->
+  <header class="no-print bg-slate-900 border-b border-slate-800 text-white sticky top-0 z-40 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight text-slate-50 flex items-center gap-2">
+            EduModul Pro <span class="text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-medium">Deep Learning Edition</span>
+          </h1>
+          <p class="text-xs text-slate-400 hidden sm:block">Perancang Modul Ajar Resmi Kurikulum Merdeka (Berkesadaran, Bermakna & Menggembirakan)</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="loadSamplePreset('ipa')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-2 rounded-lg transition font-medium flex items-center gap-1.5 shadow-sm">
+          <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.477.859h4z"/></svg>
+          <span class="hidden md:inline">Preset: </span>IPA SMP
+        </button>
+        <button type="button" onclick="loadSamplePreset('bindo')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-2 rounded-lg transition font-medium flex items-center gap-1.5 shadow-sm">
+          <svg class="w-3.5 h-3.5 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+          <span class="hidden md:inline">Preset: </span>B.Indo SMA
+        </button>
+        <a href="https://kurikulum.kemendikdasmen.go.id/panduan-mapel" target="_blank" rel="noopener noreferrer" class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-2 rounded-lg transition font-medium flex items-center gap-1.5 shadow-sm">
+          <span>Panduan CP</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Split-Screen Container -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row gap-6">
+    
+    <!-- PANEL 1: CONFIGURATION FORM (LEFT - 45%) -->
+    <section id="panel-config" class="w-full lg:w-[45%] flex flex-col space-y-5 no-print">
+      <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5 sm:p-6 flex flex-col space-y-6">
+        
+        <!-- Header Info Form -->
+        <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">1</span>
+              Parameter Perangkat Ajar
+            </h2>
+            <p class="text-xs text-slate-500 mt-0.5">Isi seluruh parameter di bawah ini secara lengkap untuk merakit instrumen ajar.</p>
+          </div>
+          <button type="button" onclick="resetForm()" class="text-xs text-rose-600 hover:text-rose-700 hover:bg-rose-50 px-2.5 py-1.5 rounded-lg border border-rose-200 transition font-medium">
+            Reset Form
+          </button>
+        </div>
+
+        <!-- SECTION A: IDENTITAS & INFORMASI UMUM -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 rounded-md">Bagian A</span>
+            <h3 class="text-sm font-bold text-slate-800">Identitas & Informasi Umum</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <!-- Nama Penyusun -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Penyusun & Gelar <span class="text-rose-500">*</span></label>
+              <input type="text" id="guru_nama" placeholder="Contoh: Dahlia, M.Pd." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            </div>
+
+            <!-- Satuan Pendidikan -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Satuan Pendidikan <span class="text-rose-500">*</span></label>
+              <input type="text" id="sekolah_nama" placeholder="Contoh: SMP Negeri 1 / SMA Negeri 2..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Tahun Ajaran -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Tahun Ajaran <span class="text-rose-500">*</span></label>
+              <input type="text" id="tahun_ajaran" placeholder="Contoh: 2025/2026" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Jenjang Pendidikan (Cascading Trigger) -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Jenjang Pendidikan <span class="text-rose-500">*</span></label>
+              <select id="jenjang_select" onchange="handleJenjangChange()" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <option value="" selected disabled>-- Pilih Jenjang --</option>
+                <option value="SD">SD / MI</option>
+                <option value="SMP">SMP / MTs</option>
+                <option value="SMA">SMA / MA</option>
+                <option value="SMK">SMK</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Kelas Dropdown -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Kelas <span class="text-rose-500">*</span></label>
+              <select id="kelas_select" onchange="handleKelasChange()" disabled class="w-full px-3 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition cursor-not-allowed">
+                <option value="" selected disabled>-- Pilih Jenjang Dahulu --</option>
+              </select>
+            </div>
+
+            <!-- Fase Capaian (Auto Readonly) -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Fase Capaian (Otomatis)</label>
+              <input type="text" id="fase_input" readonly placeholder="Terisi otomatis..." class="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-sm text-blue-700 font-semibold cursor-not-allowed">
+            </div>
+
+            <!-- Mata Pelajaran -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Mata Pelajaran <span class="text-rose-500">*</span></label>
+              <input type="text" id="mapel_nama" placeholder="Contoh: IPA, Bahasa Indonesia, Matematika..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Elemen / Domain CP -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Elemen / Domain CP <span class="text-rose-500">*</span></label>
+              <input type="text" id="elemen_cp" placeholder="Contoh: Pemahaman IPA / Membaca dan Memirsa" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Alokasi Waktu -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Alokasi Waktu <span class="text-rose-500">*</span></label>
+              <input type="text" id="alokasi_waktu" placeholder="Contoh: 120 Menit (3 JP)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Target Peserta Didik -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Target Peserta Didik <span class="text-rose-500">*</span></label>
+              <select id="target_siswa" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <option value="" selected disabled>-- Pilih Target Peserta Didik --</option>
+                <option value="Peserta Didik Reguler / Tipikal">Peserta Didik Reguler / Tipikal (Umum)</option>
+                <option value="Peserta Didik Cerdas Istimewa Berbakat Istimewa (CIBI)">Peserta Didik Cerdas Istimewa (Kecepatan Belajar Tinggi)</option>
+                <option value="Peserta Didik dengan Hambatan Belajar">Peserta Didik dengan Hambatan Belajar (Butuh Akomodasi Khusus)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION B: CAPAIAN & TUJUAN PEMBELAJARAN -->
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700 rounded-md">Bagian B</span>
+              <h3 class="text-sm font-bold text-slate-800">Capaian & Tujuan Pembelajaran</h3>
+            </div>
+            <a href="https://kurikulum.kemendikdasmen.go.id/panduan-mapel" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-600 hover:text-blue-800 font-medium underline flex items-center gap-1">
+              <span>Buka Bank CP Resmi</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+          </div>
+
+          <!-- Capaian Pembelajaran -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Capaian Pembelajaran (CP) <span class="text-rose-500">*</span></label>
+            <textarea id="capaian_teks" rows="3" placeholder="Salin kalimat Capaian Pembelajaran fase di sini..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition leading-relaxed"></textarea>
+          </div>
+
+          <!-- Topik / Materi Esensial -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Topik / Materi Esensial <span class="text-rose-500">*</span></label>
+            <input type="text" id="topik_materi" placeholder="Contoh: Perubahan Iklim & Pemanasan Global" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          </div>
+
+          <!-- Tujuan Pembelajaran -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Tujuan Pembelajaran (TP) <span class="text-rose-500">*</span> <span class="text-slate-400 font-normal">(Gunakan nomor / baris baru)</span></label>
+            <textarea id="tujuan_pembelajaran" rows="3" placeholder="Tuliskan minimal 3 butir tujuan pembelajaran spesifik..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition leading-relaxed"></textarea>
+          </div>
+
+          <!-- Dimensi Profil Lulusan (Checkbox Pills) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-2">Dimensi Profil Lulusan Terintegrasi <span class="text-rose-500">*</span> <span class="text-slate-400 font-normal">(Pilih minimal 2)</span></label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="dimensi_container">
+              <!-- Pill Items -->
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Penalaran Kritis" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Penalaran Kritis</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Kolaborasi" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Kolaborasi</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Kreativitas" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Kreativitas</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Komunikasi" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Komunikasi</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Kemandirian" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Kemandirian</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Kewargaan" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Kewargaan</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Keimanan & Ketakwaan" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Keimanan & Ketakwaan</span>
+              </label>
+              <label class="cursor-pointer border border-slate-200 rounded-xl p-2.5 flex items-center gap-2 hover:bg-slate-50 transition text-xs font-medium text-slate-700 select-none">
+                <input type="checkbox" name="profil_dimensi" value="Kesehatan" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                <span>Kesehatan</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pertanyaan Pemantik -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Pertanyaan Pemantik <span class="text-rose-500">*</span></label>
+            <textarea id="pertanyaan_pemantik" rows="2" placeholder="Contoh: Apa yang kalian rasakan saat suhu lingkungan makin panas? Mengapa es di kutub bisa mencair?" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+          </div>
+        </div>
+
+        <!-- SECTION C: MODEL, METODE & EKOSISTEM BELAJAR -->
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 rounded-md">Bagian C</span>
+            <h3 class="text-sm font-bold text-slate-800">Model, Metode & Ekosistem Belajar</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <!-- Model Pembelajaran -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Model Pembelajaran <span class="text-rose-500">*</span></label>
+              <select id="model_pembelajaran" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <option value="" selected disabled>-- Pilih Model Pedagogis --</option>
+                <option value="Problem Based Learning">Problem Based Learning (PBL)</option>
+                <option value="Project Based Learning">Project Based Learning (PjBL)</option>
+                <option value="Discovery Learning">Discovery Learning</option>
+                <option value="Inquiry Learning">Inquiry Learning</option>
+                <option value="Direct Instruction">Direct Instruction Terstruktur</option>
+              </select>
+            </div>
+
+            <!-- Metode Pembelajaran -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Metode Pembelajaran <span class="text-rose-500">*</span></label>
+              <input type="text" id="metode_pembelajaran" placeholder="Contoh: Diskusi kelompok kecil, pengamatan, presentasi" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Mitra Pembelajaran -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Mitra Pembelajaran</label>
+              <input type="text" id="mitra_belajar" placeholder="Contoh: Petani sekitar, pengusaha lokal, orang tua" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Lingkungan Belajar -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Lingkungan Belajar <span class="text-rose-500">*</span></label>
+              <input type="text" id="lingkungan_belajar" placeholder="Contoh: Ruang kelas, kebun sekolah, ruang virtual LMS" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Pemanfaatan Digital -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Pemanfaatan Digital <span class="text-rose-500">*</span></label>
+              <input type="text" id="pemanfaatan_digital" placeholder="Contoh: Wordwall, Quizizz, Google Form, Canva Edukasi" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            </div>
+
+            <!-- Sarana & Prasarana -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Sarana & Prasarana <span class="text-rose-500">*</span></label>
+              <textarea id="sarana_prasarana" rows="2" placeholder="Contoh: Laptop, LCD Proyektor, Kartu Kasus, Lembar Kerja (LKPD), Jaringan Internet" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+          <button type="button" onclick="generateModulAjar()" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-600/30 active:scale-[0.98] transition flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>⚡ GENERATE MODUL AJAR LENGKAP</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PANEL 2: WORKSPACE & DOCUMENT PREVIEW (RIGHT - 55%) -->
+    <section id="panel-workspace" class="w-full lg:w-[55%] flex flex-col space-y-4">
+      
+      <!-- TOOLBAR ACTION (Visible when document generated) -->
+      <div id="action-toolbar" class="hidden no-print bg-white border border-slate-200 rounded-2xl p-3.5 shadow-sm items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs sm:text-sm font-semibold text-slate-800">Modul Ajar Berhasil Dibuat</span>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <!-- Salin Teks -->
+          <button type="button" onclick="copyDocumentContent()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-medium transition flex items-center gap-1.5 border border-slate-200" title="Salin seluruh teks dokumen">
+            <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+            <span>Salin Teks</span>
+          </button>
+
+          <!-- Export Word -->
+          <button type="button" onclick="exportWordDocument()" class="text-xs bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-2 rounded-lg font-semibold transition flex items-center gap-1.5 border border-blue-200" title="Unduh format Microsoft Word .doc">
+            <svg class="w-3.5 h-3.5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 21a3 3 0 003-3v-4.5a3 3 0 00-3-3h-1.5V9a3 3 0 00-3-3h-9A3 3 0 003 9v9a3 3 0 003 3h13.5zm-7.5-6h-3v-3h3v3zm-4.5 0H6v-3h1.5v3zm9 0h-3v-3h3v3z"/></svg>
+            <span>Export Word (.docx)</span>
+          </button>
+
+          <!-- Print / PDF -->
+          <button type="button" onclick="printDocument()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-2 rounded-lg font-semibold transition flex items-center gap-1.5 shadow-sm shadow-emerald-600/30" title="Cetak atau Simpan sebagai PDF">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            <span>Export PDF / Cetak</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- EMPTY STATE CARD -->
+      <div id="empty-state" class="bg-white border-2 border-dashed border-slate-300 rounded-2xl p-10 text-center flex flex-col items-center justify-center min-h-[550px]">
+        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mb-5 shadow-inner">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Area Tampilan Dokumen Modul Ajar</h3>
+        <p class="text-sm text-slate-500 max-w-md mb-6 leading-relaxed">
+          Silakan lengkapi formulir konfigurasi di panel sebelah kiri atau gunakan tombol preset instan di bagian atas, lalu klik <strong>"⚡ GENERATE MODUL AJAR LENGKAP"</strong> untuk memproses instrumen ajar terpadu.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-lg text-left">
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">1. Konfigurasi</span>
+            <p class="text-xs text-slate-500 mt-1">Data identitas, capaian, dan profil pelajar otomatis terintegrasi.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="text-xs font-bold text-emerald-600">2. Deep Learning</span>
+            <p class="text-xs text-slate-500 mt-1">Sintaks model diselaraskan dengan tahapan bermakna & mindful.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="text-xs font-bold text-indigo-600">3. Siap Cetak & Word</span>
+            <p class="text-xs text-slate-500 mt-1">Lengkap LKPD, asesmen kognitif/non-kognitif, dan rubrik kinerja.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCUMENT CONTAINER WRAPPER -->
+      <div id="document-preview" class="hidden flex-1 overflow-y-auto max-h-[85vh] rounded-2xl border border-slate-200 bg-white p-6 sm:p-10 shadow-lg text-slate-800 font-serif-doc document-sheet">
+        <!-- Content will be injected dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Overlay -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Custom Alert Dialog Modal -->
+  <div id="custom-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 transform transition-all text-left">
+      <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+      </div>
+      <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-1 font-sans">Perhatian Diperlukan</h3>
+      <p id="modal-message" class="text-sm text-slate-600 font-sans leading-relaxed mb-6">Harap lengkapi semua kolom yang bertanda bintang sebelum mencetak modul.</p>
+      <div class="flex justify-end">
+        <button type="button" onclick="closeModal()" class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold px-5 py-2.5 rounded-xl font-sans transition">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GRADE_CONFIG = {
+      SD: [
+        { val: "1", label: "Kelas 1", fase: "Fase A" },
+        { val: "2", label: "Kelas 2", fase: "Fase A" },
+        { val: "3", label: "Kelas 3", fase: "Fase B" },
+        { val: "4", label: "Kelas 4", fase: "Fase B" },
+        { val: "5", label: "Kelas 5", fase: "Fase C" },
+        { val: "6", label: "Kelas 6", fase: "Fase C" }
+      ],
+      SMP: [
+        { val: "7", label: "Kelas 7", fase: "Fase D" },
+        { val: "8", label: "Kelas 8", fase: "Fase D" },
+        { val: "9", label: "Kelas 9", fase: "Fase D" }
+      ],
+      SMA: [
+        { val: "10", label: "Kelas 10", fase: "Fase E" },
+        { val: "11", label: "Kelas 11", fase: "Fase F" },
+        { val: "12", label: "Kelas 12", fase: "Fase F" }
+      ],
+      SMK: [
+        { val: "10", label: "Kelas 10", fase: "Fase E" },
+        { val: "11", label: "Kelas 11", fase: "Fase F" },
+        { val: "12", label: "Kelas 12", fase: "Fase F" }
+      ]
+    };
+
+    function handleJenjangChange() {
+      const jenjang = document.getElementById('jenjang_select').value;
+      const kelasSelect = document.getElementById('kelas_select');
+      const faseInput = document.getElementById('fase_input');
+      
+      kelasSelect.innerHTML = '<option value="" selected disabled>-- Pilih Kelas --</option>';
+      faseInput.value = '';
+
+      if (jenjang && GRADE_CONFIG[jenjang]) {
+        kelasSelect.disabled = false;
+        kelasSelect.classList.remove('cursor-not-allowed', 'bg-slate-100');
+        kelasSelect.classList.add('bg-slate-50');
+
+        GRADE_CONFIG[jenjang].forEach(item => {
+          const opt = document.createElement('option');
+          opt.value = item.val;
+          opt.textContent = item.label;
+          opt.dataset.fase = item.fase;
+          kelasSelect.appendChild(opt);
+        });
+      } else {
+        kelasSelect.disabled = true;
+        kelasSelect.classList.add('cursor-not-allowed', 'bg-slate-100');
+      }
+    }
+
+    function handleKelasChange() {
+      const kelasSelect = document.getElementById('kelas_select');
+      const faseInput = document.getElementById('fase_input');
+      const selectedOption = kelasSelect.options[kelasSelect.selectedIndex];
+      
+      if (selectedOption && selectedOption.dataset.fase) {
+        faseInput.value = selectedOption.dataset.fase;
+      } else {
+        faseInput.value = '';
+      }
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      const bgColor = type === 'success' ? 'bg-emerald-800 text-emerald-100 border-emerald-700' : 'bg-slate-900 text-slate-100 border-slate-800';
+      
+      toast.className = `${bgColor} border px-4 py-3 rounded-xl shadow-xl text-xs sm:text-sm font-sans flex items-center gap-2 transform transition-all duration-300 translate-y-2 opacity-0 pointer-events-auto`;
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        <span>${message}</span>
+      `;
+      
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      }, 50);
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-2', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    function showModal(title, msg) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-message').textContent = msg;
+      document.getElementById('custom-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('custom-modal').classList.add('hidden');
+    }
+
+    function loadSamplePreset(type) {
+      if (type === 'ipa') {
+        document.getElementById('guru_nama').value = "Dahlia Kartika, M.Pd.";
+        document.getElementById('sekolah_nama').value = "SMP Negeri 1 Nusantara";
+        document.getElementById('tahun_ajaran').value = "2025/2026";
+        document.getElementById('jenjang_select').value = "SMP";
+        handleJenjangChange();
+        document.getElementById('kelas_select').value = "7";
+        handleKelasChange();
+        document.getElementById('mapel_nama').value = "Ilmu Pengetahuan Alam (IPA)";
+        document.getElementById('elemen_cp').value = "Pemahaman IPA & Keterampilan Proses";
+        document.getElementById('alokasi_waktu').value = "120 Menit (3 JP)";
+        document.getElementById('target_siswa').value = "Peserta Didik Reguler / Tipikal";
+        document.getElementById('capaian_teks').value = "Peserta didik memahami dampak perubahan iklim global terhadap ekosistem serta mampu merancang solusi mitigasi dan adaptasi sederhana berbasis kearifan lokal.";
+        document.getElementById('topik_materi').value = "Perubahan Iklim, Pemanasan Global & Penyelamatan Lingkungan";
+        document.getElementById('tujuan_pembelajaran').value = "1. Menganalisis 3 penyebab utama pemanasan global melalui data grafik kenaikan emisi karbon.\n2. Mengidentifikasi dampak nyata krisis iklim terhadap kelangsungan ekosistem sekitar sekolah.\n3. Merancang infografis atau aksi nyata kampanye hemat energi di lingkungan sekolah secara berkolaborasi.";
+        
+        // Select pills
+        const targetDims = ["Penalaran Kritis", "Kolaborasi", "Kreativitas"];
+        document.querySelectorAll('input[name="profil_dimensi"]').forEach(cb => {
+          cb.checked = targetDims.includes(cb.value);
+        });
+
+        document.getElementById('pertanyaan_pemantik').value = "Mengapa suhu udara di daerah kita terasa semakin terik dari tahun ke tahun? Apa yang terjadi pada beruang kutub jika es abadi mencair?";
+        document.getElementById('model_pembelajaran').value = "Problem Based Learning";
+        document.getElementById('metode_pembelajaran').value = "Investigasi kelompok, diskusi berbasis studi kasus, galeri karya";
+        document.getElementById('mitra_belajar').value = "Dinas Lingkungan Hidup setempat, Komunitas Bank Sampah Sekolah";
+        document.getElementById('lingkungan_belajar').value = "Ruang kelas digital, taman biopori sekolah, platform LMS";
+        document.getElementById('pemanfaatan_digital').value = "Wordwall (kuis pemantik), Google Earth (pemantauan es kutub), Canva Edu";
+        document.getElementById('sarana_prasarana').value = "Proyektor, laptop per kelompok, termometer digital, modul ajar cetak, LKPD cetak";
+        showToast("Preset IPA SMP Berhasil Dimuat!", "success");
+      } else if (type === 'bindo') {
+        document.getElementById('guru_nama').value = "Rian Hidayat, S.Pd., M.Hum.";
+        document.getElementById('sekolah_nama').value = "SMA Unggulan Garuda 1";
+        document.getElementById('tahun_ajaran').value = "2025/2026";
+        document.getElementById('jenjang_select').value = "SMA";
+        handleJenjangChange();
+        document.getElementById('kelas_select').value = "10";
+        handleKelasChange();
+        document.getElementById('mapel_nama').value = "Bahasa Indonesia";
+        document.getElementById('elemen_cp').value = "Membaca, Memirsa & Menulis Teks Argumentasi";
+        document.getElementById('alokasi_waktu').value = "90 Menit (2 JP)";
+        document.getElementById('target_siswa').value = "Peserta Didik Reguler / Tipikal";
+        document.getElementById('capaian_teks').value = "Peserta didik mampu mengevaluasi gagasan dan fakta dalam teks argumentasi serta menyusun teks argumentasi kritis yang logis dan persuasif.";
+        document.getElementById('topik_materi').value = "Menulis Teks Argumentasi Bertema Ketahanan Pangan Lokal";
+        document.getElementById('tujuan_pembelajaran').value = "1. Menemukan fakta dan opini dalam artikel ketahanan pangan umbi-umbian lokal.\n2. Menyusun kerangka teks argumentasi dengan penalaran logis dan data rujukan valid.\n3. Menulis artikel opini pendek berstruktur kohesif dan mempublikasikannya di blog sekolah.";
+        
+        const targetDims = ["Penalaran Kritis", "Komunikasi", "Kewargaan"];
+        document.querySelectorAll('input[name="profil_dimensi"]').forEach(cb => {
+          cb.checked = targetDims.includes(cb.value);
+        });
+
+        document.getElementById('pertanyaan_pemantik').value = "Jika beras mengalami kelangkaan harga drastis, komoditas lokal apa yang paling siap menyelamatkan piring makan masyarakat Indonesia?";
+        document.getElementById('model_pembelajaran').value = "Project Based Learning";
+        document.getElementById('metode_pembelajaran').value = "Bedah wacana, lokakarya penulisan, peer-review (umpan balik teman sejawat)";
+        document.getElementById('mitra_belajar').value = "Jurnalis media lokal, Petani umbi organik sentra desa";
+        document.getElementById('lingkungan_belajar').value = "Perpustakaan sekolah, ruang kelas multimedia";
+        document.getElementById('pemanfaatan_digital').value = "Padlet (papan kurasi argumen), Google Docs kolaboratif, KBBI Daring";
+        document.getElementById('sarana_prasarana').value = "Kumpulan artikel surat kabar, lembar panduan koreksi sejawat, papan tempel karya";
+        showToast("Preset Bahasa Indonesia SMA Berhasil Dimuat!", "success");
+      }
+    }
+
+    function resetForm() {
+      document.querySelectorAll('input[type="text"], textarea').forEach(el => el.value = '');
+      document.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+      
+      const kelasSelect = document.getElementById('kelas_select');
+      kelasSelect.innerHTML = '<option value="" selected disabled>-- Pilih Jenjang Dahulu --</option>';
+      kelasSelect.disabled = true;
+      kelasSelect.classList.add('cursor-not-allowed', 'bg-slate-100');
+
+      document.getElementById('document-preview').classList.add('hidden');
+      document.getElementById('empty-state').classList.remove('hidden');
+      document.getElementById('action-toolbar').classList.add('hidden');
+      document.getElementById('action-toolbar').classList.remove('flex');
+      showToast("Formulir telah dikosongkan.", "info");
+    }
+
+    function generateDeepLearningSteps(modelName, topik, mapel, alokasi) {
+      // Pembagian tahapan Deep Learning: Berkesadaran, Bermakna, Menggembirakan
+      let steps = {
+        pendahuluan: [
+          {
+            tahap: "Pengkondisian & Berkesadaran (Mindful Check-in)",
+            durasi: "15 Menit",
+            kegiatan: `Guru menyapa peserta didik dengan hangat, memimpin doa bersama, dan melakukan presensi. Guru memandu latihan pernapasan sadar (<em>Stop, Breathe, Observe, Proceed</em>) selama 2 menit untuk menghadirkan konsentrasi utuh siswa di ruang belajar.`,
+            deepPillar: "Berkesadaran (Mindful Learning)"
+          },
+          {
+            tahap: "Apersepsi Kontekstual & Pertanyaan Pemantik",
+            durasi: "10 Menit",
+            kegiatan: `Guru menampilkan stimulus visual/isu nyata terkait topik <strong>${topik}</strong>. Siswa diajak menjawab pertanyaan pemantik guna mengaitkan pengetahuan awal dengan materi baru secara bermakna.`,
+            deepPillar: "Bermakna (Meaningful Learning)"
+          },
+          {
+            tahap: "Penyampaian Tujuan & Kontrak Belajar Ceria",
+            durasi: "5 Menit",
+            kegiatan: `Guru menyampaikan tujuan pembelajaran, kesepakatan kelas, serta manfaat nyata materi ini bagi kehidupan sehari-hari siswa.`,
+            deepPillar: "Menggembirakan (Joyful Learning)"
+          }
+        ],
+        inti: [],
+        penutup: [
+          {
+            tahap: "Refleksi Terbimbing (Metakognisi)",
+            durasi: "10 Menit",
+            kegiatan: `Peserta didik diajak merefleksikan apa yang telah dipahami, hal menarik yang dirasakan, dan tantangan yang dihadapi melalui metode '3 Hal Baru, 2 Pertanyaan, 1 Komitmen'.`,
+            deepPillar: "Berkesadaran (Reflektif)"
+          },
+          {
+            tahap: "Kuis Ringkas Digital / Asesmen Akhir Cepat",
+            durasi: "10 Menit",
+            kegiatan: `Pelaksanaan kuis interaktif singkat yang memicu antusiasme gembira untuk mengecek ketercapaian tujuan pembelajaran hari ini.`,
+            deepPillar: "Menggembirakan & Bermakna"
+          },
+          {
+            tahap: "Apresiasi, Tindak Lanjut & Penutup",
+            durasi: "5 Menit",
+            kegiatan: `Guru memberikan penguatan positif atas kerja kolaboratif seluruh siswa, menyampaikan topik pertemuan berikutnya, dan menutup dengan doa penutup serta yel-yel penyemangat kelas.`,
+            deepPillar: "Menggembirakan (Joyful Learning)"
+          }
+        ]
+      };
+
+      // Model Syntaxes mapped to Deep Learning (Memahami, Mengaplikasikan, Merefleksi)
+      if (modelName === "Problem Based Learning") {
+        steps.inti = [
+          {
+            sintaks: "Tahap 1: Orientasi Siswa pada Masalah Nyata",
+            fokus: "Memahami Esensi (Understanding)",
+            kegiatan: `Guru menyajikan video atau wacana studi kasus otentik mengenai fenomena <em>${topik}</em>. Peserta didik membaca kritis masalah tersebut dan mengidentifikasi rumusan masalah utama secara mandiri dan sadar (mindful inquiry).`,
+            durasi: "15 Menit",
+            prinsip: "Bermakna: Menghubungkan teori dengan krisis nyata di dunia anak."
+          },
+          {
+            sintaks: "Tahap 2: Mengorganisasikan Siswa untuk Belajar",
+            fokus: "Membangun Kerangka Kolaborasi",
+            kegiatan: `Peserta didik dibagi menjadi tim heterogen (4-5 siswa). Kelompok menyepakati pembagian peran (ketua, pencatat, pengumpul data, desainer) dan mendiskusikan batasan masalah yang akan dipecahkan dalam LKPD.`,
+            durasi: "10 Menit",
+            prinsip: "Menggembirakan: Rasa kepemilikan peran dalam suasana aman dan saling dukung."
+          },
+          {
+            sintaks: "Tahap 3: Membimbing Penyelidikan Mandiri & Kelompok",
+            fokus: "Mengaplikasikan & Menginvestigasi (Applying)",
+            kegiatan: `Peserta didik melakukan eksplorasi referensi, wawancara atau pengamatan data terkait <em>${topik}</em>. Guru bertindak sebagai fasilitator dengan memberikan scaffolding terarah bagi kelompok yang menghadapi hambatan berpikir.`,
+            durasi: "25 Menit",
+            prinsip: "Bermakna: Eksplorasi aktif berorientasi data dan fakta konkret."
+          },
+          {
+            sintaks: "Tahap 4: Mengembangkan dan Menyajikan Hasil Solusi",
+            fokus: "Mengkreasi & Mengkomunikasikan (Creating)",
+            kegiatan: `Setiap kelompok merumuskan solusi alternatif dan menuangkannya ke dalam format kreatif (infografis mini, peta konsep, atau resume solusi). Tim melakukan presentasi 'Pameran Karya / Galeri Berjalan' di mana sebagian anggota berkunjung ke stan kelompok lain.`,
+            durasi: "20 Menit",
+            prinsip: "Menggembirakan: Gerak aktif antarkelompok dengan pertukaran apresiasi."
+          },
+          {
+            sintaks: "Tahap 5: Menganalisis & Mengevaluasi Proses Pemecahan Masalah",
+            fokus: "Merefleksikan Penalaran (Reflecting)",
+            kegiatan: `Guru memimpin diskusi pleno untuk menguji validitas gagasan solusi yang diajukan peserta didik. Peserta didik saling memberikan umpan balik konstruktif dengan metode kalimat 'Saya suka idemu karena... dan akan makin sempurna jika...'.`,
+            durasi: "15 Menit",
+            prinsip: "Berkesadaran: Menumbuhkan nalar kritis dan kerendahan hati intelektual."
+          }
+        ];
+      } else if (modelName === "Project Based Learning") {
+        steps.inti = [
+          {
+            sintaks: "Tahap 1: Penentuan Pertanyaan Mendasar (Driving Question)",
+            fokus: "Memahami Isu Sentral",
+            kegiatan: `Guru memantik rasa ingin tahu dengan pertanyaan proyek kontekstual bertema <em>${topik}</em>. Murid menyusun pertanyaan turunan yang relevan dengan lingkungan sekitar mereka.`,
+            durasi: "15 Menit",
+            prinsip: "Bermakna: Murid memimpin arah eksplorasi topik yang berdampak nyata."
+          },
+          {
+            sintaks: "Tahap 2: Mendesain Perencanaan Proyek",
+            fokus: "Kolaborasi & Manajemen Proyek",
+            kegiatan: `Peserta didik membentuk tim kerja, memilih media karya kreatif (poster edukasi, rekaman siniar/podcast, maket model, artikel), serta menetapkan aturan kerja kelompok.`,
+            durasi: "15 Menit",
+            prinsip: "Menggembirakan: Memberi ruang kebebasan berekspresi sesuai minat murid."
+          },
+          {
+            sintaks: "Tahap 3: Menyusun Jadwal dan Target Pelaksanaan",
+            fokus: "Kemandirian & Manajemen Waktu",
+            kegiatan: `Kelompok memetakan linimasa pengerjaan proyek dari tahap pengumpulan data, pengolahan, hingga finalisasi kemasan proyek.`,
+            durasi: "10 Menit",
+            prinsip: "Berkesadaran: Menyadari alokasi waktu dan tanggung jawab peran masing-masing."
+          },
+          {
+            sintaks: "Tahap 4: Memonitor Keaktifan dan Perkembangan Proyek",
+            fokus: "Mengaplikasikan & Mengeksekusi Karya",
+            kegiatan: `Peserta didik mengeksekusi proyek secara kolaboratif. Guru berkeliling memberikan pendampingan, memantau rubrik proses, dan membantu mengurai kendala teknis.`,
+            durasi: "25 Menit",
+            prinsip: "Bermakna: Belajar melalui pembuatan karya nyata (learning by making)."
+          },
+          {
+            sintaks: "Tahap 5: Menguji Hasil & Evaluasi Pengalaman Belajar",
+            fokus: "Merefleksikan & Merayakan Capaian",
+            kegiatan: `Setiap tim memamerkan draf/produk akhir proyeknya. Guru dan rekan sejawat memberikan penilaian autentik menggunakan rubrik karya, dilanjutkan perayaan bersama atas keberhasilan kelompok.`,
+            durasi: "20 Menit",
+            prinsip: "Menggembirakan: Pengakuan sosial dan perayaan prestasi belajar."
+          }
+        ];
+      } else {
+        // Discovery / Inquiry / Generic structured syntax
+        steps.inti = [
+          {
+            sintaks: "Tahap 1: Stimulasi / Eksplorasi Terbimbing",
+            fokus: "Membangkitkan Rasa Ingin Tahu",
+            kegiatan: `Peserta didik mengamati fenomena misteri sains/fakta bahasa bertema <em>${topik}</em>. Guru menstimulasi persepsi anak untuk melahirkan pertanyaan-pertanyaan eksploratif.`,
+            durasi: "15 Menit",
+            prinsip: "Menggembirakan: Rasa takjub dan penasaran membuka pintu kognisi."
+          },
+          {
+            sintaks: "Tahap 2: Identifikasi Masalah & Perumusan Hipotesis",
+            fokus: "Memahami Esensi Masalah",
+            kegiatan: `Dalam kelompok kecil, peserta didik merumuskan hipotesis awal mengenai hubungan sebab-akibat fenomena materi yang dikaji.`,
+            durasi: "15 Menit",
+            prinsip: "Bermakna: Menstimulasi logika berfikir deduktif yang terstruktur."
+          },
+          {
+            sintaks: "Tahap 3: Pengumpulan & Pengolahan Data",
+            fokus: "Mengaplikasikan Keterampilan Proses",
+            kegiatan: `Peserta didik mengisi lembar investigasi LKPD, menguji data melalui simulasi/wacana digital, dan mendiskusikan pembuktian bersama rekan satu kelompok.`,
+            durasi: "25 Menit",
+            prinsip: "Bermakna: Mengonversi informasi abstrak menjadi pemahaman teruji."
+          },
+          {
+            sintaks: "Tahap 4: Verifikasi & Penarikan Kesimpulan (Generalisasi)",
+            fokus: "Merefleksikan & Mengonsolidasi Konsep",
+            kegiatan: `Peserta didik membandingkan hasil pengolahan data dengan hipotesis awal. Perwakilan kelompok menyampaikan intisari simpulan konsep secara lugas di depan kelas.`,
+            durasi: "20 Menit",
+            prinsip: "Berkesadaran: Memvalidasi kebenaran konsep secara objektif dan ilmiah."
+          },
+          {
+            sintaks: "Tahap 5: Aplikasi Konsep dalam Konteks Baru",
+            fokus: "Transfer Pengetahuan (Deep Transfer)",
+            kegiatan: `Guru memberikan tantangan kasus mikro untuk menguji kemampuan siswa mentransfer konsep yang baru dipahami ke dalam skenario kehidupan baru.`,
+            durasi: "10 Menit",
+            prinsip: "Menggembirakan: Sensasi keberhasilan menguasai kompetensi baru secara tuntas."
+          }
+        ];
+      }
+
+      return steps;
+    }
+
+    function generateModulAjar() {
+      // 1. Ambil data formulir
+      const guruNama = document.getElementById('guru_nama').value.trim();
+      const sekolahNama = document.getElementById('sekolah_nama').value.trim();
+      const tahunAjaran = document.getElementById('tahun_ajaran').value.trim();
+      const jenjang = document.getElementById('jenjang_select').value;
+      const kelas = document.getElementById('kelas_select').value;
+      const fase = document.getElementById('fase_input').value;
+      const mapel = document.getElementById('mapel_nama').value.trim();
+      const elemenCP = document.getElementById('elemen_cp').value.trim();
+      const alokasi = document.getElementById('alokasi_waktu').value.trim();
+      const targetSiswa = document.getElementById('target_siswa').value;
+
+      const cpTeks = document.getElementById('capaian_teks').value.trim();
+      const topikMateri = document.getElementById('topik_materi').value.trim();
+      const tpTeks = document.getElementById('tujuan_pembelajaran').value.trim();
+      const pertanyaanPemantik = document.getElementById('pertanyaan_pemantik').value.trim();
+
+      const selectedDimensi = Array.from(document.querySelectorAll('input[name="profil_dimensi"]:checked')).map(cb => cb.value);
+
+      const model = document.getElementById('model_pembelajaran').value;
+      const metode = document.getElementById('metode_pembelajaran').value.trim();
+      const mitra = document.getElementById('mitra_belajar').value.trim() || "Masyarakat sekitar, Orang tua murid, dan Komunitas praktisi";
+      const lingkungan = document.getElementById('lingkungan_belajar').value.trim();
+      const digital = document.getElementById('pemanfaatan_digital').value.trim();
+      const sarpras = document.getElementById('sarana_prasarana').value.trim();
+
+      // 2. Validasi input wajib
+      if (!guruNama || !sekolahNama || !tahunAjaran || !jenjang || !kelas || !mapel || !elemenCP || !alokasi || !targetSiswa || !cpTeks || !topikMateri || !tpTeks || selectedDimensi.length === 0 || !pertanyaanPemantik || !model || !metode || !lingkungan || !digital || !sarpras) {
+        showModal("Lengkapi Semua Isian Wajib", "Masih terdapat kolom penting yang belum Anda isi atau belum memilih minimal 1 Dimensi Profil Lulusan. Harap periksa formulir konfigurasi Anda.");
+        return;
+      }
+
+      // Format TP jadi daftar list
+      const tpList = tpTeks.split('\n').filter(item => item.trim() !== '').map(item => `<li>${item.trim()}</li>`).join('');
+
+      // Generate langkah Deep Learning
+      const deepSteps = generateDeepLearningSteps(model, topikMateri, mapel, alokasi);
+
+      // Render Baris Tabel Langkah Inti
+      const rowsInti = deepSteps.inti.map((st, idx) => `
+        <tr class="border-b border-slate-200">
+          <td class="p-3 align-top font-bold text-slate-700 bg-slate-50/50 text-xs text-center">${idx + 1}</td>
+          <td class="p-3 align-top">
+            <span class="font-bold text-slate-800 text-xs">${st.sintaks}</span><br>
+            <span class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">${st.fokus}</span>
+          </td>
+          <td class="p-3 align-top text-xs leading-relaxed text-slate-700">${st.kegiatan}</td>
+          <td class="p-3 align-top text-xs text-center font-semibold text-slate-600">${st.durasi}</td>
+          <td class="p-3 align-top text-[11px] italic text-emerald-800 bg-emerald-50/30">${st.prinsip}</td>
+        </tr>
+      `).join('');
+
+      // Render Baris Tabel Pendahuluan
+      const rowsPendahuluan = deepSteps.pendahuluan.map((st, idx) => `
+        <tr class="border-b border-slate-200">
+          <td class="p-3 align-top font-bold text-slate-700 bg-slate-50/50 text-xs text-center">${idx + 1}</td>
+          <td class="p-3 align-top font-semibold text-slate-800 text-xs">${st.tahap}</td>
+          <td class="p-3 align-top text-xs leading-relaxed text-slate-700">${st.kegiatan}</td>
+          <td class="p-3 align-top text-xs text-center font-semibold text-slate-600">${st.durasi}</td>
+          <td class="p-3 align-top text-[11px] font-semibold text-indigo-700">${st.deepPillar}</td>
+        </tr>
+      `).join('');
+
+      // Render Baris Tabel Penutup
+      const rowsPenutup = deepSteps.penutup.map((st, idx) => `
+        <tr class="border-b border-slate-200">
+          <td class="p-3 align-top font-bold text-slate-700 bg-slate-50/50 text-xs text-center">${idx + 1}</td>
+          <td class="p-3 align-top font-semibold text-slate-800 text-xs">${st.tahap}</td>
+          <td class="p-3 align-top text-xs leading-relaxed text-slate-700">${st.kegiatan}</td>
+          <td class="p-3 align-top text-xs text-center font-semibold text-slate-600">${st.durasi}</td>
+          <td class="p-3 align-top text-[11px] font-semibold text-indigo-700">${st.deepPillar}</td>
+        </tr>
+      `).join('');
+
+      // Render Dimensi Badges & Penjelasan
+      const dimensiTags = selectedDimensi.map(d => `<span class="inline-block bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-1 rounded-md text-xs font-semibold mr-1.5 mb-1.5">✓ ${d}</span>`).join('');
+      
+      const dimensiRubrikRows = selectedDimensi.map(d => `
+        <tr class="border-b border-slate-200">
+          <td class="p-3 align-top font-bold text-slate-800 text-xs">${d}</td>
+          <td class="p-3 align-top text-xs text-slate-600">Mulai menunjukkan tanda-tanda awal penguasaan dimensi ${d} dengan bimbingan penuh guru.</td>
+          <td class="p-3 align-top text-xs text-slate-600">Mampu mempraktikkan dimensi ${d} secara berkala saat diminta dalam tugas kelompok.</td>
+          <td class="p-3 align-top text-xs text-slate-700 font-medium bg-emerald-50/40">Secara konsisten dan mandiri menerapkan dimensi ${d} dalam penyelidikan masalah.</td>
+          <td class="p-3 align-top text-xs text-blue-900 font-semibold bg-blue-50/40">Menjadi teladan bagi rekan sejawat dan menginspirasi solusi kreatif berbasis ${d}.</td>
+        </tr>
+      `).join('');
+
+      // Tanggal Pengesahan Resmi
+      const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+      const tanggalHariIni = new Date().toLocaleDateString('id-ID', optionsDate);
+
+      const docHtml = `
+        <div id="module-document-content" class="text-slate-900 text-xs sm:text-sm leading-relaxed">
+          
+          <!-- KOP JUDUL RESMI -->
+          <div class="text-center border-b-2 border-slate-900 pb-4 mb-6">
+            <h1 class="text-base sm:text-xl font-extrabold uppercase tracking-wide text-slate-900 font-sans">
+              MODUL AJAR PEMBELAJARAN MENDALAM (DEEP LEARNING)
+            </h1>
+            <h2 class="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-700 mt-1 font-sans">
+              KURIKULUM MERDEKA - ${sekolahNama.toUpperCase()}
+            </h2>
+            <div class="flex items-center justify-center gap-3 mt-2 text-xs font-semibold text-slate-600 font-sans">
+              <span>Mata Pelajaran: <strong>${mapel}</strong></span>
+              <span>•</span>
+              <span>Fase: <strong>${fase}</strong> (Kelas ${kelas} ${jenjang})</span>
+              <span>•</span>
+              <span>Tahun Ajaran: <strong>${tahunAjaran}</strong></span>
+            </div>
+          </div>
+
+          <!-- A. IDENTITAS MODUL -->
+          <div class="mb-6">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-100 px-3 py-1.5 border-l-4 border-blue-600 text-slate-900 mb-3 font-sans">
+              A. IDENTITAS & INFORMASI UMUM MODUL
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse border border-slate-300 text-xs">
+                <tbody>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-semibold bg-slate-50 w-1/3 border-r border-slate-200">Nama Penyusun & Gelar</td>
+                    <td class="p-2.5 text-slate-800 font-medium">${guruNama}</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-semibold bg-slate-50 border-r border-slate-200">Satuan Pendidikan</td>
+                    <td class="p-2.5 text-slate-800">${sekolahNama}</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-semibold bg-slate-50 border-r border-slate-200">Jenjang / Kelas / Fase</td>
+                    <td class="p-2.5 text-slate-800 font-semibold">${jenjang} / Kelas ${kelas} / ${fase}</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-semibold bg-slate-50 border-r border-slate-200">Mata Pelajaran & Elemen CP</td>
+                    <td class="p-2.5 text-slate-800">${mapel} — [Elemen: ${elemenCP}]</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-semibold bg-slate-50 border-r border-slate-200">Alokasi Waktu</td>
+                    <td class="p-2.5 text-slate-800">${alokasi}</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-semibold bg-slate-50 border-r border-slate-200">Target Peserta Didik</td>
+                    <td class="p-2.5 text-slate-800">${targetSiswa}</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2.5 font-semibold bg-slate-50 border-r border-slate-200">Capaian Pembelajaran (CP) Fase</td>
+                    <td class="p-2.5 text-slate-800 italic leading-relaxed bg-slate-50/40">"${cpTeks}"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- B. DIMENSI PROFIL LULUSAN -->
+          <div class="mb-6">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-100 px-3 py-1.5 border-l-4 border-blue-600 text-slate-900 mb-2 font-sans">
+              B. DIMENSI PROFIL LULUSAN TERINTEGRASI
+            </h3>
+            <div class="p-3 bg-white border border-slate-200 rounded-lg">
+              <div class="mb-2">${dimensiTags}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Dimensi profil di atas ditumbuhkembangkan secara simultan melalui pembiasaan berpikir kritis saat membedah fakta wacana, berkolaborasi secara setara dalam tim penyelidikan, serta merancang karya yang komunikatif dan berorientasi manfaat nyata bagi lingkungan sekitar.
+              </p>
+            </div>
+          </div>
+
+          <!-- C. MODEL, METODE, DAN PENDEKATAN BELAJAR -->
+          <div class="mb-6">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-100 px-3 py-1.5 border-l-4 border-blue-600 text-slate-900 mb-2 font-sans">
+              C. MODEL, METODE, DAN PENDEKATAN PEDAGOGIS
+            </h3>
+            <div class="p-3 bg-white border border-slate-200 rounded-lg text-xs space-y-1.5">
+              <p><strong>Pendekatan:</strong> <span class="text-indigo-700 font-semibold">Deep Learning (Mindful, Meaningful, & Joyful Learning)</span></p>
+              <p><strong>Model Pembelajaran:</strong> <span class="font-semibold text-slate-800">${model}</span></p>
+              <p><strong>Metode Spesifik:</strong> ${metode}</p>
+              <p class="text-slate-500 italic text-[11px] pt-1">
+                *Integrasi Deep Learning memastikan setiap sintaks model tidak hanya berfokus pada ketuntasan konten, melainkan menghidupkan kesadaran penuh (berkesadaran), relevansi kontekstual (bermakna), dan iklim kelas yang merayakan rasa ingin tahu siswa (menggembirakan).
+              </p>
+            </div>
+          </div>
+
+          <!-- D, E, F, G: EKOSISTEM BELAJAR GRID -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- D. MITRA BELAJAR -->
+            <div class="border border-slate-200 rounded-lg p-3">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-1.5 font-sans flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span> D. Mitra Pembelajaran
+              </h4>
+              <p class="text-xs text-slate-700">${mitra}</p>
+            </div>
+
+            <!-- E. LINGKUNGAN BELAJAR -->
+            <div class="border border-slate-200 rounded-lg p-3">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-1.5 font-sans flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> E. Lingkungan Belajar
+              </h4>
+              <p class="text-xs text-slate-700">${lingkungan}</p>
+            </div>
+
+            <!-- F. PEMANFAATAN DIGITAL -->
+            <div class="border border-slate-200 rounded-lg p-3">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-1.5 font-sans flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-indigo-600"></span> F. Pemanfaatan Media Digital
+              </h4>
+              <p class="text-xs text-slate-700">${digital}</p>
+            </div>
+
+            <!-- G. SARANA & PRASARANA -->
+            <div class="border border-slate-200 rounded-lg p-3">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-1.5 font-sans flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-600"></span> G. Sarana & Prasarana
+              </h4>
+              <p class="text-xs text-slate-700">${sarpras}</p>
+            </div>
+          </div>
+
+          <!-- H. TUJUAN PEMBELAJARAN -->
+          <div class="mb-6">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-100 px-3 py-1.5 border-l-4 border-blue-600 text-slate-900 mb-2 font-sans">
+              H. TUJUAN PEMBELAJARAN (TP)
+            </h3>
+            <div class="p-3 bg-white border border-slate-200 rounded-lg text-xs">
+              <p class="text-slate-600 mb-2 font-semibold">Setelah menuntaskan serangkaian aktivitas pembelajaran mendalam ini, peserta didik diharapkan mampu:</p>
+              <ul class="list-decimal list-inside space-y-1 text-slate-800 font-medium pl-1">
+                ${tpList}
+              </ul>
+            </div>
+          </div>
+
+          <!-- I. PERTANYAAN PEMANTIK & J. MATERI ESENSIAL -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border border-slate-200 rounded-lg p-3 bg-amber-50/20">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-1.5 font-sans text-amber-900">
+                I. Pertanyaan Pemantik
+              </h4>
+              <p class="text-xs italic text-slate-700">"${pertanyaanPemantik}"</p>
+            </div>
+            <div class="border border-slate-200 rounded-lg p-3 bg-blue-50/20">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-1.5 font-sans text-blue-900">
+                J. Topik / Materi Esensial
+              </h4>
+              <p class="text-xs font-semibold text-slate-800">${topikMateri}</p>
+            </div>
+          </div>
+
+          <!-- K. LANGKAH-LANGKAH PEMBELAJARAN MENDALAM -->
+          <div class="mb-6">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-100 px-3 py-1.5 border-l-4 border-blue-600 text-slate-900 mb-3 font-sans">
+              K. LANGKAH-LANGKAH PEMBELAJARAN MENDALAM (DEEP LEARNING JOURNEY)
+            </h3>
+
+            <!-- 1. Pendahuluan -->
+            <div class="mb-4">
+              <h4 class="font-bold text-xs uppercase text-slate-700 mb-2 font-sans flex items-center justify-between">
+                <span>1. Kegiatan Pendahuluan (Berkesadaran Penuh & Motivasi Awal)</span>
+                <span class="text-slate-500 font-normal">Total: 30 Menit</span>
+              </h4>
+              <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-slate-300 text-xs">
+                  <thead class="bg-slate-100 font-sans text-slate-700">
+                    <tr>
+                      <th class="p-2.5 border border-slate-300 w-10 text-center">No</th>
+                      <th class="p-2.5 border border-slate-300 w-1/4 text-left">Tahapan Apersepsi</th>
+                      <th class="p-2.5 border border-slate-300 text-left">Uraian Rinci Aktivitas Guru & Murid</th>
+                      <th class="p-2.5 border border-slate-300 w-20 text-center">Waktu</th>
+                      <th class="p-2.5 border border-slate-300 w-1/5 text-left">Pilar Deep Learning</th>
+                    </tr>
+                  </thead>
+                  <tbody>${rowsPendahuluan}</tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 2. Kegiatan Inti -->
+            <div class="mb-4">
+              <h4 class="font-bold text-xs uppercase text-slate-700 mb-2 font-sans flex items-center justify-between">
+                <span>2. Kegiatan Inti (Sintaks ${model} x Pilar Deep Learning)</span>
+                <span class="text-slate-500 font-normal">Total: 85 Menit</span>
+              </h4>
+              <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-slate-300 text-xs">
+                  <thead class="bg-slate-100 font-sans text-slate-700">
+                    <tr>
+                      <th class="p-2.5 border border-slate-300 w-10 text-center">No</th>
+                      <th class="p-2.5 border border-slate-300 w-1/4 text-left">Sintaks Model & Fokus Kognisi</th>
+                      <th class="p-2.5 border border-slate-300 text-left">Eksplorasi Pembelajaran Mendalam</th>
+                      <th class="p-2.5 border border-slate-300 w-20 text-center">Waktu</th>
+                      <th class="p-2.5 border border-slate-300 w-1/5 text-left">Catatan Karakteristik</th>
+                    </tr>
+                  </thead>
+                  <tbody>${rowsInti}</tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 3. Penutup -->
+            <div class="mb-4">
+              <h4 class="font-bold text-xs uppercase text-slate-700 mb-2 font-sans flex items-center justify-between">
+                <span>3. Kegiatan Penutup (Refleksi Metakognitif & Selebrasi)</span>
+                <span class="text-slate-500 font-normal">Total: 25 Menit</span>
+              </h4>
+              <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-slate-300 text-xs">
+                  <thead class="bg-slate-100 font-sans text-slate-700">
+                    <tr>
+                      <th class="p-2.5 border border-slate-300 w-10 text-center">No</th>
+                      <th class="p-2.5 border border-slate-300 w-1/4 text-left">Tahap Konsolidasi</th>
+                      <th class="p-2.5 border border-slate-300 text-left">Aktivitas Evaluasi & Apresiasi</th>
+                      <th class="p-2.5 border border-slate-300 w-20 text-center">Waktu</th>
+                      <th class="p-2.5 border border-slate-300 w-1/5 text-left">Prinsip Belajar</th>
+                    </tr>
+                  </thead>
+                  <tbody>${rowsPenutup}</tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- L. ASESMEN & PENILAIAN -->
+          <div class="mb-6">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-100 px-3 py-1.5 border-l-4 border-blue-600 text-slate-900 mb-3 font-sans">
+              L. RANCANGAN ASESMEN PEMBELAJARAN
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse border border-slate-300 text-xs">
+                <thead class="bg-slate-100 font-sans text-slate-700">
+                  <tr>
+                    <th class="p-2.5 border border-slate-300 text-left">Kategori Asesmen</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Bentuk / Teknik</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Instrumen & Fokus Sasaran</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-bold text-slate-800 bg-slate-50">1. Asesmen Diagnostik (Awal)</td>
+                    <td class="p-2.5">Non-kognitif & Kuis diagnostik kesiapan awal</td>
+                    <td class="p-2.5">Angket perasaan emosional harian, roda emosi, dan 3 butir pertanyaan prasyarat materi ${topikMateri}.</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 font-bold text-slate-800 bg-slate-50">2. Asesmen Formatif (Proses)</td>
+                    <td class="p-2.5">Observasi kinerja kelompok, tanya jawab lisan, penilaian antarteman</td>
+                    <td class="p-2.5">Lembar observasi keterlibatan diskusi, rubrik proses pengerjaan LKPD, dan catatan anekdotal ketercapaian dimensi profil lulusan.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2.5 font-bold text-slate-800 bg-slate-50">3. Asesmen Sumatif (Akhir)</td>
+                    <td class="p-2.5">Produk tugas terstruktur / Portofolio pemecahan masalah</td>
+                    <td class="p-2.5">Rubrik penilaian produk akhir / sajian infografis solusi, disertai tes tertulis pemahaman nalar kontekstual.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- M. REFLEKSI GURU & PESERTA DIDIK -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="border border-slate-200 rounded-lg p-3 bg-white">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-2 font-sans text-blue-900 flex items-center gap-1.5">
+                <span>M.1 Refleksi Guru</span>
+              </h4>
+              <ul class="list-disc list-inside text-xs space-y-1 text-slate-700">
+                <li>Apakah seluruh peserta didik terlibat aktif dan merasa aman saat mengutarakan gagasan kelompok?</li>
+                <li>Bagian sintaks mana yang paling menantang bagi siswa dan memerlukan penyesuaian waktu lebih banyak?</li>
+                <li>Strategi diferensiasi apa yang perlu saya optimalkan untuk membantu siswa yang butuh pendampingan lebih?</li>
+              </ul>
+            </div>
+            <div class="border border-slate-200 rounded-lg p-3 bg-white">
+              <h4 class="font-bold text-slate-800 text-xs uppercase mb-2 font-sans text-emerald-900 flex items-center gap-1.5">
+                <span>M.2 Refleksi Peserta Didik</span>
+              </h4>
+              <ul class="list-disc list-inside text-xs space-y-1 text-slate-700">
+                <li>Hal baru apa yang paling membuatmu terkejut dan tertarik pada pembelajaran ${mapel} hari ini?</li>
+                <li>Kapan saat kamu merasa paling bersemangat atau terbantu oleh teman satu kelompokmu?</li>
+                <li>Apa langkah kecil nyata yang ingin kamu terapkan setelah memahami materi ${topikMateri}?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-break my-8 border-b-2 border-dashed border-slate-300"></div>
+
+          <!-- LAMPIRAN 1: ASESMEN DIAGNOSTIK NON-KOGNITIF -->
+          <div class="mb-8">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-800 text-white px-3 py-1.5 rounded mb-3 font-sans">
+              LAMPIRAN 1: INSTRUMEN ASESMEN DIAGNOSTIK NON-KOGNITIF (SOSIAL-EMOSIONAL)
+            </h3>
+            <p class="text-xs text-slate-600 mb-3 italic">Digunakan pada 5 menit awal pendahuluan untuk memetakan kesiapan psikologis dan energi belajar peserta didik.</p>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse border border-slate-300 text-xs">
+                <thead class="bg-slate-100 font-sans text-slate-800">
+                  <tr>
+                    <th class="p-2.5 border border-slate-300 w-12 text-center">No</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Aspek Pengamatan / Pertanyaan Pemantik Emosi</th>
+                    <th class="p-2.5 border border-slate-300 text-left w-1/3">Pilihan Respons Siswa (Simbol/Ekspresi)</th>
+                    <th class="p-2.5 border border-slate-300 text-left w-1/4">Tindak Lanjut Pedagogis Guru</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 text-center font-bold">1</td>
+                    <td class="p-2.5">Bagaimana cuaca perasaan hatimu saat melangkahkan kaki ke sekolah hari ini?</td>
+                    <td class="p-2.5">☀️ Cerah Bersemangat / ⛅ Biasa Saja / 🌧️ Kurang Bersemangat / ⛈️ Sedih-Lelah</td>
+                    <td class="p-2.5 text-slate-600">Lakukan obrolan singkat empatik bagi murid yang memilih cuaca mendung/hujan lebat.</td>
+                  </tr>
+                  <tr class="border-b border-slate-200">
+                    <td class="p-2.5 text-center font-bold">2</td>
+                    <td class="p-2.5">Seberapa siap fisik dan konsentrasimu untuk berkolaborasi dalam proyek ${topikMateri}?</td>
+                    <td class="p-2.5">🔋 Baterai Penuh (100%) / 🔋 Sedang (50%) / 🪫 Butuh Rehat (&lt;20%)</td>
+                    <td class="p-2.5 text-slate-600">Ajak peserta didik melakukan ice breaking peregangan otot ringan.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2.5 text-center font-bold">3</td>
+                    <td class="p-2.5">Gaya belajar apa yang paling membantumu memahami materi hari ini?</td>
+                    <td class="p-2.5">👀 Melihat video/grafik / 🎧 Mendengar penjelasan / ✍️ Langsung mencoba/praktik</td>
+                    <td class="p-2.5 text-slate-600">Diferensiasikan sumber belajar kelompok (teks bacaan, infografis, dan video singkat).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- LAMPIRAN 2: RUBRIK PENGAMATAN KINERJA PROFIL LULUSAN -->
+          <div class="mb-8">
+            <h3 class="text-xs sm:text-sm font-bold uppercase bg-slate-800 text-white px-3 py-1.5 rounded mb-3 font-sans">
+              LAMPIRAN 2: RUBRIK PENGAMATAN KINERJA PROFIL LULUSAN TERPILIH
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse border border-slate-300 text-xs">
+                <thead class="bg-slate-100 font-sans text-slate-800">
+                  <tr>
+                    <th class="p-2.5 border border-slate-300 w-1/5 text-left">Dimensi Terpilih</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Baru Berkembang (Skor 1)</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Layak (Skor 2)</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Cakap (Skor 3)</th>
+                    <th class="p-2.5 border border-slate-300 text-left">Mahir (Skor 4)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${dimensiRubrikRows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="page-break my-8 border-b-2 border-dashed border-slate-300"></div>
+
+          <!-- LAMPIRAN 3: LEMBAR KERJA PESERTA DIDIK (LKPD) -->
+          <div class="mb-8 border-2 border-slate-800 p-5 rounded-xl bg-white">
+            <div class="text-center border-b border-slate-300 pb-3 mb-4">
+              <span class="text-[11px] font-bold text-blue-700 tracking-wider uppercase">LEMBAR KERJA PESERTA DIDIK (LKPD)</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 font-sans mt-0.5">
+                INVESTIGASI DEEP LEARNING: "${topikMateri.toUpperCase()}"
+              </h3>
+              <p class="text-xs text-slate-500">${sekolahNama} — Mata Pelajaran ${mapel}</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs mb-4 bg-slate-50 p-2.5 rounded border border-slate-200">
+              <div><strong>Nama Kelompok:</strong> .....................................................</div>
+              <div><strong>Kelas / Fase:</strong> Kelas ${kelas} / ${fase}</div>
+              <div class="col-span-2"><strong>Anggota Kelompok:</strong> 1) .................... 2) .................... 3) .................... 4) ....................</div>
+            </div>
+
+            <!-- Petunjuk Kerja -->
+            <div class="mb-4">
+              <h5 class="text-xs font-bold text-slate-800 uppercase font-sans mb-1">A. Petunjuk Aktivitas Belajar Bermakna:</h5>
+              <ol class="list-decimal list-inside text-xs text-slate-700 space-y-1 pl-1">
+                <li>Duduklah melingkar bersama tim dan baca dengan seksama kasus kontekstual di bawah ini.</li>
+                <li>Diskusikan rumusan masalah dengan menjunjung tinggi sikap saling mendengarkan dan menghargai ide rekan.</li>
+                <li>Manfaatkan media rujukan (buku siswa, perpustakaan, atau portal digital terverifikasi) untuk menghimpun data solusi.</li>
+                <li>Tuangkan rancangan gagasan kelompok ke dalam format kolom kerja yang disediakan.</li>
+              </ol>
+            </div>
+
+            <!-- Wacana Kasus Kontekstual -->
+            <div class="mb-4 bg-blue-50/50 p-3 rounded-lg border border-blue-200">
+              <h5 class="text-xs font-bold text-blue-950 uppercase font-sans mb-1">B. Kasus Kontekstual / Real-World Dilemma:</h5>
+              <p class="text-xs text-slate-700 leading-relaxed italic">
+                "Di era sekarang, isu tentang <strong>${topikMateri}</strong> menjadi perhatian serius masyarakat global maupun lokal. Banyak kebiasaan sehari-hari di sekitar lingkungan kita yang tanpa sadar memicu permasalahan yang kian rumit. Sebagai generasi muda yang kritis dan peduli, kelompok kalian ditunjuk sebagai Tim Penyelidik Muda untuk membedah akar masalah dan merumuskan terobosan aksi nyata yang mudah diterapkan di lingkungan sekolah."
+              </p>
+            </div>
+
+            <!-- Lembar Investigasi Kelompok -->
+            <div class="space-y-3 text-xs">
+              <div class="border border-slate-300 p-2.5 rounded">
+                <span class="font-bold text-slate-800 block mb-1">1. Rumusan Masalah Utama yang Ditemukan Kelompok:</span>
+                <div class="h-14 border-b border-dotted border-slate-300"></div>
+              </div>
+
+              <div class="border border-slate-300 p-2.5 rounded">
+                <span class="font-bold text-slate-800 block mb-1">2. Temuan Fakta & Data Pendukung (Hasil Pengamatan / Rujukan Digital):</span>
+                <div class="h-20 border-b border-dotted border-slate-300"></div>
+              </div>
+
+              <div class="border border-slate-300 p-2.5 rounded">
+                <span class="font-bold text-slate-800 block mb-1">3. Gagasan Solusi Kreatif & Langkah Aksi Nyata:</span>
+                <div class="h-24 border-b border-dotted border-slate-300"></div>
+              </div>
+
+              <div class="border border-slate-300 p-2.5 rounded bg-emerald-50/30">
+                <span class="font-bold text-slate-800 block mb-1">4. Format Penyajian Karya (Pilih: Infografis / Vlog Mini / Peta Pikiran / Naskah Presentasi):</span>
+                <p class="text-[11px] text-slate-500">Jelaskan alasan kelompok kalian memilih media tersebut agar pesan tersampaikan secara persuasif dan menggembirakan.</p>
+                <div class="h-12 border-b border-dotted border-slate-300"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BAGIAN PENGESAHAN RESMI -->
+          <div class="mt-8 pt-6 border-t-2 border-slate-800 text-xs font-sans">
+            <div class="flex justify-between items-start">
+              <div class="text-center w-5/12">
+                <p>Mengetahui,</p>
+                <p class="font-bold">Kepala ${sekolahNama}</p>
+                <div class="h-20"></div>
+                <p class="font-bold underline text-slate-900">........................................................</p>
+                <p class="text-slate-600">NIP. ....................................................</p>
+              </div>
+
+              <div class="text-center w-5/12">
+                <p>${sekolahNama.includes("SMA") || sekolahNama.includes("SMP") ? "Ditetapkan di Satuan Pendidikan" : "Tempat Satuan Pendidikan"}, ${tanggalHariIni}</p>
+                <p class="font-bold">Guru Mata Pelajaran</p>
+                <div class="h-20"></div>
+                <p class="font-bold underline text-slate-900">${guruNama}</p>
+                <p class="text-slate-600">NIP. ....................................................</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      // 3. Render ke Container
+      const previewEl = document.getElementById('document-preview');
+      previewEl.innerHTML = docHtml;
+      previewEl.classList.remove('hidden');
+      document.getElementById('empty-state').classList.add('hidden');
+      
+      const actionToolbar = document.getElementById('action-toolbar');
+      actionToolbar.classList.remove('hidden');
+      actionToolbar.classList.add('flex');
+
+      // Scroll halus ke tampilan hasil pada layar mobile
+      if (window.innerWidth < 1024) {
+        actionToolbar.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      showToast("Modul Ajar utuh berhasil digenerate!", "success");
+    }
+
+    function copyDocumentContent() {
+      const docEl = document.getElementById('module-document-content');
+      if (!docEl) {
+        showToast("Belum ada dokumen yang digenerate.", "info");
+        return;
+      }
+
+      // Memakai teknik seleksi teks & execCommand('copy') untuk kompatibilitas penuh di iframe
+      const textToCopy = docEl.innerText;
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = textToCopy;
+      tempTextArea.style.position = 'fixed';
+      tempTextArea.style.left = '-9999px';
+      tempTextArea.style.top = '0';
+      document.body.appendChild(tempTextArea);
+      tempTextArea.focus();
+      tempTextArea.select();
+
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast("Teks modul ajar berhasil disalin ke clipboard!", "success");
+        } else {
+          showToast("Gagal menyalin teks secara otomatis.", "info");
+        }
+      } catch (err) {
+        showToast("Terjadi kendala saat menyalin teks.", "info");
+      } finally {
+        document.body.removeChild(tempTextArea);
+      }
+    }
+
+    function exportWordDocument() {
+      const docEl = document.getElementById('module-document-content');
+      if (!docEl) {
+        showToast("Belum ada modul yang digenerate.", "info");
+        return;
+      }
+
+      const mapel = document.getElementById('mapel_nama').value.trim() || "Mapel";
+      const kelas = document.getElementById('kelas_select').value || "Kelas";
+
+      // Membangun dokumen HTML lengkap dengan styling kompatibel Microsoft Word
+      const headerHtml = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+              xmlns:w='urn:schemas-microsoft-com:office:word' 
+              xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <meta charset="utf-8">
+          <title>Modul Ajar - ${mapel}</title>
+          <style>
+            body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; color: #1e293b; }
+            table { border-collapse: collapse; width: 100%; margin-bottom: 12pt; }
+            th, td { border: 1px solid #94a3b8; padding: 6pt; font-size: 10pt; }
+            th { background-color: #f1f5f9; font-weight: bold; }
+            h1 { font-size: 14pt; text-align: center; margin-bottom: 4pt; }
+            h2 { font-size: 12pt; text-align: center; margin-bottom: 12pt; color: #334155; }
+            h3 { font-size: 11pt; background-color: #e2e8f0; padding: 4pt; margin-top: 12pt; }
+            .page-break { page-break-before: always; }
+          </style>
+        </head>
+        <body>
+      `;
+      const footerHtml = "</body></html>";
+      const fullContent = headerHtml + docEl.innerHTML + footerHtml;
+
+      const blob = new Blob(['\ufeff' + fullContent], {
+        type: 'application/msword;charset=utf-8'
+      });
+
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement("a");
+      downloadLink.href = url;
+      const cleanFileName = `Modul_Ajar_${mapel.replace(/[^a-zA-Z0-9]/g, "_")}_Kelas_${kelas}.doc`;
+      downloadLink.download = cleanFileName;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(url);
+
+      showToast(`Mengunduh berkas Word: ${cleanFileName}`, "success");
+    }
+
+    function printDocument() {
+      const docEl = document.getElementById('module-document-content');
+      if (!docEl) {
+        showToast("Silakan generate modul ajar terlebih dahulu.", "info");
+        return;
+      }
+      window.print();
+    }
+  </script>
+</body>
+</html>
+Menampilkan aplikasi_generator_modul_ajar_sekolah_Gemini.html.
